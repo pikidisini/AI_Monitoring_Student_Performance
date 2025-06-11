@@ -79,6 +79,8 @@ Model yang terlatih telah di deploy menggunakan streamlit dan siap digunakan unt
 
 URL Aplikasi Streamlit: [Student Performance Monitor App](https://studentperformancemonitor.streamlit.app/)
 
+Sebagai contoh, anda bisa menggunakan file data dummy `data_mahasiswa_baru.csv` yang tersedia di direktori utama untuk uji coba prediksi pada model yang telah dideploy ke streamlit.
+
 ## Conclusion
 Proyek ini berhasil mengembangkan solusi untuk membantu Jaya Jaya Institut dalam memprediksi status mahasiswa, dengan fokus utama pada identifikasi mahasiswa yang berpotensi dropout.
 
