@@ -4,50 +4,62 @@
 Jaya Jaya Institut merupakan salah satu institusi pendidikan perguruan yang telah berdiri sejak tahun 2000. Hingga saat ini ia telah mencetak banyak lulusan dengan reputasi yang sangat baik. Akan tetapi, terdapat banyak juga siswa yang tidak menyelesaikan pendidikannya alias dropout.
 
 ### Permasalahan Bisnis
-Jumlah dropout yang tinggi ini tentunya menjadi salah satu masalah yang besar untuk sebuah institusi pendidikan. Oleh karena itu, Jaya Jaya Institut ingin mendeteksi secepat mungkin siswa yang mungkin akan melakukan dropout sehingga dapat diberi bimbingan khusus.
+1. Tingginya angka dropout mahasiswa menjadi tantangan serius bagi Jaya Jaya Institut karena dapat memengaruhi reputasi, kualitas pendidikan, dan efisiensi operasional institusi.
+2. Belum adanya solusi berbasis teknologi seperti sistem prediksi yang dapat mendukung pengambilan keputusan dalam manajemen pendidikan. 
+3. Ketiadaan alat bantu analisis dan visualisasi yang dapat digunakan pihak manajemen untuk memonitor kondisi mahasiswa secara real-time dan berbasis data.
 
 ### Cakupan Proyek
 Proyek ini bertujuan untuk:
-1.  Melakukan analisis data eksploratif (EDA) pada dataset mahasiswa untuk mengidentifikasi pola dan faktor-faktor yang mungkin berkorelasi dengan status dropout.
-2.  Melakukan pra-pemrosesan data yang diperlukan agar data siap digunakan untuk pemodelan machine learning.
-3.  Mengembangkan model klasifikasi machine learning untuk memprediksi kemungkinan seorang mahasiswa akan dropout.
-4.  Mengevaluasi performa model yang telah dibangun dan melakukan tuning hyperparameter untuk optimasi.
-5.  Membuat dashboard interaktif untuk memvisualisasikan data siswa dan hasil analisis, guna memudahkan pihak institut dalam memonitor dan mengambil keputusan.
+1.  Melakukan analisis mengidentifikasi pola dan faktor-faktor yang berkontribusi terhadap risiko dropout.
+2.  Mengembangkan prototipe aplikasi machine learning prediktif berbasis Streamlit untuk memudahkan staf akademik mengevaluasi risiko dropout berdasarkan hasil prediksi model.
+3. Membangun dashboard interaktif menggunakan Metabase untuk menyajikan visualisasi data mahasiswa dan hasil analisis dropout
 
 ### Persiapan
 
-Sumber data: [Student Performance Data Set](https://github.com/dicodingacademy/dicoding_dataset/blob/main/students_performance/data.csv)
+Sumber data: Sumber data: [Student Performance Dataset](https://github.com/dicodingacademy/dicoding_dataset/blob/main/students_performance/data.csv)
 
-Dataset disediakan oleh Jaya Jaya Institut dalam file `data.csv`. Dataset ini berisi 37 kolom yang mencakup berbagai informasi mengenai mahasiswa, termasuk data demografi, status pendaftaran, kualifikasi sebelumnya, informasi akademik per semester (jumlah SKS yang diambil, dievaluasi, disetujui, dan nilai), serta data ekonomi makro. Variabel target adalah kolom 'Status' yang memiliki tiga kategori: Dropout, Enrolled, dan Graduate.
+#### Setup environment:
 
-Setup environment:
+##### Windows
 
 ```
+python -m venv .venv
+.venv\Scripts\activate
 pip install -r requirements.txt
 ```
-# Proyek Akhir: Menyelesaikan Permasalahan Perusahaan Edutech
+##### Linux/Mac
 
-## Business Understanding
-Jaya Jaya Institut merupakan salah satu institusi pendidikan perguruan yang telah berdiri sejak tahun 2000. Hingga saat ini ia telah mencetak banyak lulusan dengan reputasi yang sangat baik. Akan tetapi, terdapat banyak juga siswa yang tidak menyelesaikan pendidikannya alias dropout.
+```
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
 
-### Permasalahan Bisnis
-Jumlah dropout yang tinggi ini tentunya menjadi salah satu masalah yang besar untuk sebuah institusi pendidikan. Oleh karena itu, Jaya Jaya Institut ingin mendeteksi secepat mungkin siswa yang mungkin akan melakukan dropout sehingga dapat diberi bimbingan khusus.
+##### Conda
 
-### Cakupan Proyek
-Proyek ini bertujuan untuk:
-1.  Melakukan analisis data eksploratif (EDA) pada dataset mahasiswa untuk mengidentifikasi pola dan faktor-faktor yang mungkin berkorelasi dengan status dropout.
-2.  Melakukan pra-pemrosesan data yang diperlukan agar data siap digunakan untuk pemodelan machine learning.
-3.  Mengembangkan model klasifikasi machine learning untuk memprediksi kemungkinan seorang mahasiswa akan dropout.
-4.  Mengevaluasi performa model yang telah dibangun dan melakukan tuning hyperparameter untuk optimasi.
-5.  Membuat dashboard interaktif menggunakan Metabase untuk memvisualisasikan data siswa dan hasil analisis.
-6.  Mengembangkan prototipe solusi machine learning yang siap digunakan user menggunakan Streamlit dan melakukan deployment ke Streamlit Community Cloud.
-
-### Persiapan
-
-Sumber data: Sumber data: [Student Performance Data Set](https://github.com/dicodingacademy/dicoding_dataset/blob/main/students_performance/data.csv)Untuk kemudahan, Anda dapat menginstal pustaka Python menggunakan `pip install -r requirements.txt` (pastikan Anda membuat file `requirements.txt` yang sesuai).
+```
+conda create --name attrition-ds python=3.10.6
+conda activate attrition-ds
+pip install -r requirements.txt
+```
 
 ## Business Dashboard (Metabase)
-Dashboard interaktif telah dibuat menggunakan **Metabase** untuk membantu Jaya Jaya Institut dalam memahami data dan memonitor performa siswa.
+Dashboard interaktif telah dibuat menggunakan **Metabase** untuk membantu Jaya Jaya Institut dalam memahami data dan memonitor performa siswa. Dashboard ini dibuat menggunakan Metabase. Dashboard beserta database instance telah di ekspor pada `metabase.db.mv.db` yang disimpan pada direktori `metabase-data` dan telah disediakan file `docker-compose.yml` pada direktori utama untuk menjalankan dashboard.
+
+### Menjalankan Dashboard Metabase Docker
+
+1. Install Docker Download & install [Docker Desktop](https://www.docker.com/products/docker-desktop/)
+2. Buka CMD di direktori tempat file `docker-compose.yml` berada
+3. Jalankan Metabase Container
+   ```
+   docker-compose up
+   ```
+4. Buka di Browser: http://localhost:3000
+5. Untuk menghentikan Container tekan `Ctrl + c` pada CMD
+6. Untuk menghapus container
+   ```
+   docker-compose down
+   ```
 
 **Kredensial Akses Metabase (Contoh):**
 *   Email: `root@mail.com`
@@ -62,42 +74,34 @@ Dashboard ini menampilkan beberapa visualisasi utama, antara lain:
 -   **Perbandingan Rata-rata Nilai (Semester 1 & 2) berdasarkan Status Mahasiswa**: Bar chart yang membandingkan rata-rata nilai akademik pada semester pertama dan kedua untuk setiap status mahasiswa.
 -   **Distribusi Usia Saat Pendaftaran berdasarkan Status Mahasiswa**: Bar chart yang menunjukkan distribusi usia mahasiswa saat pertama kali mendaftar, dikelompokkan berdasarkan status akhir mereka.
 
-
-**Ekspor Dashboard dan Database Instance dari Metabase:**
-Setelah membuat dashboard, Anda dapat mengekspor dashboard beserta database instance dari container Metabase. Asumsikan nama container yang Anda buat adalah `metabase`, jalankan perintah berikut di terminal Anda:
-```bash
-# Untuk menjalankan analisis dan pelatihan model:
-1.  **Pastikan Environment Siap**: Instal semua pustaka Python yang tercantum di bagian "Setup environment".
-2.  **Unduh Dataset**: Pastikan file `data.csv` berada dalam direktori yang sama dengan file notebook `notebook.ipynb`.
-3.  **Jalankan Jupyter Notebook**: Buka dan jalankan semua sel kode dalam file `notebook.ipynb`. Ini akan melakukan proses dari pemuatan data, pra-pemrosesan, pelatihan model, hingga evaluasi.
-4.  **Lihat Hasil**: Output dari setiap tahap, termasuk statistik data, visualisasi, metrik evaluasi model, dan fitur penting akan ditampilkan langsung di dalam notebook.
-Ekspor database Metabase (akan menghasilkan file metabase.db.mv.db atau serupa)
-docker cp metabase:/metabase.db.mv.db .
-
-# Untuk mengekspor dashboard secara spesifik, biasanya dilakukan melalui antarmuka Metabase
-# atau dengan mengekspor seluruh aplikasi data jika menggunakan fitur serialisasi.
-# Pastikan Anda mengikuti panduan Metabase untuk backup dan restore yang paling sesuai.
-# Perintah di atas adalah untuk mengambil file database utama Metabase.
-
-
-Dataset disediakan oleh Jaya Jaya Institut dalam file `data.csv`. Dataset ini berisi 37 kolom yang mencakup berbagai informasi mengenai mahasiswa, termasuk data demografi, status pendaftaran, kualifikasi sebelumnya, informasi akademik per semester (jumlah SKS yang diambil, dievaluasi, disetujui, dan nilai), serta data ekonomi makro. Variabel target adalah kolom 'Status' yang memiliki tiga kategori: Dropout, Enrolled, dan Graduate.
-
-Setup environment:
-
-## Business Dashboard
-Jelaskan tentang business dashboard yang telah dibuat. Jika ada, sertakan juga link untuk mengakses dashboard tersebut.
-
 ## Menjalankan Sistem Machine Learning
-Jelaskan cara menjalankan protoype sistem machine learning yang telah dibuat. Selain itu, sertakan juga link untuk mengakses prototype tersebut.
+Model yang terlatih telah di deploy menggunakan streamlit dan siap digunakan untuk melakukan prediksi pada data baru. Data bisa dimasukan secara manual atau mengunggah file berekstensi '.csv' dengan format kolom / fitur yang sesuai dengan data yang digunakan untuk melatih model. Untuk mengakses aplikasinya, anda dapat mengunjungi laman dibawah ini:
 
-```
-
-```
+URL Aplikasi Streamlit: [Student Performance Monitor App](https://studentperformancemonitor.streamlit.app/)
 
 ## Conclusion
-Jelaskan konklusi dari proyek yang dikerjakan.
+Proyek ini berhasil mengembangkan solusi untuk membantu Jaya Jaya Institut dalam memprediksi status mahasiswa, dengan fokus utama pada identifikasi mahasiswa yang berpotensi dropout.
+
+1. Analisis data awal menunjukkan bahwa dataset tidak memiliki nilai yang hilang namun terdapat ketidakseimbangan kelas pada variabel target 'Status', di mana jumlah mahasiswa 'Graduate' paling banyak, diikuti 'Dropout', dan 'Enrolled'.
+
+2. Model awal `RandomForestClassifier` (tanpa tuning ekstensif selain `class_weight='balanced'`) menunjukkan akurasi 100% pada data latih dan ~74.9% pada data uji. Ini mengindikasikan overfitting yang signifikan. Meskipun demikian, model ini menunjukkan kemampuan yang baik dalam membedakan kelas 'Dropout' dengan ROC AUC Score untuk kelas 'Dropout' sebesar 0.9099 pada data uji, dan recall sebesar 0.75. Namun, performa pada kelas 'Enrolled' sangat rendah (recall 0.27).
+
+3. Setelah dilakukan hyperparameter tuning menggunakan `GridSearchCV` dengan parameter terbaik `{'max_depth': 10, 'min_samples_leaf': 4, 'min_samples_split': 2, 'n_estimators': 300}`, model `RandomForestClassifier` yang dioptimalkan menunjukkan akurasi ~74.8% pada data uji. Perbaikan signifikan terlihat pada recall kelas 'Enrolled' yang meningkat menjadi 0.62, dan presisi kelas 'Dropout' meningkat menjadi 0.81. Meskipun recall kelas 'Dropout' sedikit menurun menjadi 0.69, `macro avg f1-score` meningkat dari 0.65 menjadi 0.71, menunjukkan performa yang lebih seimbang antar kelas.
+
+4. Analisis fitur penting dari model Random Forest (sebelum tuning) mengidentifikasi bahwa performa akademik di semester awal (jumlah SKS yang disetujui dan nilai semester 1 & 2) serta status pembayaran SPP (`Tuition_fees_up_to_date`) adalah prediktor yang sangat dominan. Fitur-fitur lain seperti nilai masuk, usia saat pendaftaran, dan status beasiswa juga menunjukkan kontribusi.
+
+5. Dashboard telah berhasil dibuat menggunakan Metabase, yang menyajikan berbagai visualisasi seperti ringkasan status mahasiswa, status pembayaran SPP, status beasiswa, rata-rata SKS, perbandingan nilai semester, dan distribusi usia pendaftaran, semuanya dikelompokkan berdasarkan status mahasiswa. Dashboard ini dapat diakses dan dijalankan menggunakan Docker dengan kredensial yang telah disediakan.
+
+6. Sebagai solusi machine learning yang siap digunakan, sebuah prototipe aplikasi web telah dikembangkan menggunakan Streamlit dan di-deploy ke Streamlit Community Cloud. Aplikasi ini memungkinkan pengguna untuk melakukan prediksi status mahasiswa baik dengan input manual maupun dengan mengunggah file CSV. Hasil prediksi, termasuk probabilitas untuk setiap kelas, dapat dilihat dan diunduh oleh pengguna.
+
+Secara keseluruhan, proyek ini menyediakan alat bantu berbasis data (dashboard Metabase) untuk monitoring dan alat prediksi (aplikasi Streamlit) yang dapat digunakan oleh Jaya Jaya Institut untuk mengambil tindakan preventif terhadap mahasiswa yang berpotensi dropout.
+
 
 ### Rekomendasi Action Items
-Berikan beberapa rekomendasi action items yang harus dilakukan perusahaan guna menyelesaikan permasalahan atau mencapai target mereka.
-- action item 1
-- action item 2
+Berikut beberapa rekomendasi action items yang bisa dilakukan oleh Jaya Jaya Institut untuk menyelesaikan permasalahan bisnis dan mencapai target yang diinginkan:
+
+1. **Mengembangkan program pendampingan akademik bagi mahasiswa berisiko tinggi:** Berdasarkan hasil prediksi model, mahasiswa dengan performa akademik rendah di semester awal dan status pembayaran SPP yang belum lunas memiliki risiko tinggi untuk dropout. Institusi dapat membuat program mentoring atau konseling khusus bagi mahasiswa dalam kategori ini untuk membantu mereka secara akademik maupun finansial.
+
+2. **Meninjau kembali kebijakan keuangan dan beasiswa:** Salah satu faktor signifikan penyebab dropout adalah ketidakmampuan membayar SPP tepat waktu. Jaya Jaya Institut dapat mempertimbangkan skema pembayaran yang lebih fleksibel atau memperluas cakupan program beasiswa bagi mahasiswa yang memiliki performa baik namun terkendala secara finansial.
+
+3. **Menggunakan dashboard Metabase secara rutin dalam evaluasi akademik:** Visualisasi data dari Metabase seperti status SPP, beasiswa, nilai akademik, dan distribusi usia dapat digunakan dalam rapat akademik berkala untuk mengidentifikasi pola dan kelompok mahasiswa yang membutuhkan perhatian khusus.
